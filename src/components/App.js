@@ -11,7 +11,6 @@ constructor(){
   this.state = {
     content: null
   }
-
 }
 
   componentDidMount() {
@@ -59,8 +58,6 @@ constructor(){
   }
 
   render(){
-
-    
     return (
       <div>
         { this.state.content &&
