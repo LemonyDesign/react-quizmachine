@@ -10,7 +10,20 @@ const triviaObject =
     "Meta Knight",
     "R.O.B."
   ]
+},
+{
+    category:"Entertainment: Video Games",
+    type:"multiple",
+    difficulty:"medium",
+    question:"Which of these characters was almost added into Super Smash Bros. Melee, but not included as the game was too far in development?",
+    correct_answer:"Solid Snake",
+    incorrect_answers:[
+      "Pit",
+      "Meta Knight",
+      "R.O.B."
+    ]
 }
+
 
 const newTriviaObject = 
 {
