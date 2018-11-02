@@ -4,13 +4,17 @@ function QandA({content}) {
  const idKeys = Object.keys(content);
     return (
       <div>
+          <h2>Questions</h2>
           {idKeys.map(id => {
               const itemKeys = Object.keys(content[id]);
-              itemKeys.map(key =>{
+              return itemKeys.map(key =>{
                   if (key === "question") {
-                    console.log(id, "question: ", content[id]["question"]);
+                    // console.log(id, "question: ", content[id]["question"]);
+                    return <p>{content[id]["question"]}</p>
                   } else if (key === "all_answers") {
-                    console.log(id, "all_answers: ", content[id]["all_answers"]);
+                      
+                    // console.log(id, "all_answers: ", content[id]["all_answers"]);
+                    return <p>{id}</p>
                   }
               })
           })}
