@@ -56,6 +56,12 @@ export function addCorrectAnswers(id, isCorrect){
       type: 'ADD_CORRECT_ANSWERS',
       id,
       isCorrect
+  }
+}
 
+export function disableRadio(){
+  return {
+      type: 'CHANGE_RADIO_SETTING',
+      disabled
   }
 }
