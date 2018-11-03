@@ -1,6 +1,7 @@
 import React from 'react';
 import AnswersContainer from '../containers/AnswersContainer';
 import { decode } from 'he';
+import cx from 'classnames';
 
 class Question extends React.Component {
 
@@ -12,11 +13,17 @@ class Question extends React.Component {
     render(){
       const questions = this.props.questions;
       const scoreTally = this.props.scoreTally;
+      const status = this.props.status;
       const idKeys = Object.keys(questions);
-      console.log(scoreTally.score)
+      console.log("status", status.completed)
+
+      const completedClasses = cx('quiz', {
+        'quiz--completed': status.completed,
+        '': !status.completed
+      });
 
       return (
-        <div>
+        <section className={completedClasses}>
             <h2>Know your movies?</h2>
 
             {idKeys.map(id => {
@@ -25,19 +32,26 @@ class Question extends React.Component {
             const theQuestion = questions[id].question;
             const answersArr = questions[id].all_answers
 
-            return <article key={questionID}>
-                      <strong>{decode(theQuestion)}</strong>
-                      <form>
+            return <article className="quizunit" key={questionID}>
+                      
+                      <strong className="quizunit__question">{decode(theQuestion)}</strong>
+
                         {Object.values(answersArr).map(answer => {
                           return <AnswersContainer key={answer.text} answer={answer} id={id} />
                         })}
-                      </form>
+                      
                   </article>
             })}
-
-        <h2>Your score is {scoreTally.score} </h2>
+        
+          <nav>
+            <button type="text" onClick={() => this.props.endQuizSession()} >How did you do?</button>
+          </nav>
+          <section className="score">
+            <h2 className="score">Your score is {scoreTally.score} </h2>
+          </section>
+        
         <p><strong>fetchNextQuestions function to be built - which will be used to trigger the fetching of a new set of questions using mapDispatchToProps</strong></p>
-      </div>
+      </section>
       )
     }
 }

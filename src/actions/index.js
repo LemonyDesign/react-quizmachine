@@ -59,9 +59,15 @@ export function addCorrectAnswers(id, isCorrect){
   }
 }
 
-export function disableRadio(){
+export function disableRadio(id){
   return {
       type: 'CHANGE_RADIO_SETTING',
-      disabled
+      id
+  }
+}
+
+export function setQuizStatus(){
+  return {
+      type: 'SET_QUIZ_STATUS'
   }
 }

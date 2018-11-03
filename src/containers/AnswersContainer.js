@@ -3,6 +3,7 @@ import Answer from '../components/Answer';
 import { addCorrectAnswers } from '../actions';
 import { disableRadio } from '../actions';
 
+
 const mapStateToProps = state => {
     // console.log("Step 6 - calling mapStateToProps in QuestionContainer")
     return {
@@ -14,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         selectAnswer: (id, isCorrect) => dispatch(addCorrectAnswers(id, isCorrect)),
-        changeRadio: () => dispatch(disableRadio())
+        changeRadio: (id) => dispatch(disableRadio(id))
     }
 }
 

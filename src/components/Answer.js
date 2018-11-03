@@ -4,19 +4,21 @@ import { decode } from 'he';
     function Answer({answer, id, selectAnswer, changeRadio, radioSetting}){
     
     const theAnswer = answer.text;
-    console.log(radioSetting.disabled)
-
+    // console.log(radioSetting.disabled)
+    
     return (
-    <div>
+    <div className="quizunit__controls">
         <input 
+            className={answer.type}
             onChange={(event) => selectAnswer(id, event.target.value)} 
-            onClick={() => changeRadio()} 
+            onClick={(id) => changeRadio(id)} 
             type = "radio" 
             name = {id} 
             id = {answer.text}
             value = {answer.type}
+            // disabled = {radioSetting.disabled}
              />
-        <label htmlFor={theAnswer}>{decode(theAnswer)}<span>{answer.type}</span></label>
+        <label className="quizunit__label" htmlFor={theAnswer}>{decode(theAnswer)}</label>
     </div>
     )
 }

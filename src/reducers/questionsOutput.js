@@ -8,13 +8,3 @@ function questionSet(state = {}, action){
   } 
 }
 export default questionSet;
-
-
-
-
-
-
-
-
-
-
