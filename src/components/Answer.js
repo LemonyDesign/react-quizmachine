@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/components/Answer.scss';
 import { decode } from 'he';
 
-    function Answer({answer, id, selectAnswer, changeRadio, radioSetting}){
+    function Answer({answer, id, selectAnswer, changeRadio}){
     
     const theAnswer = answer.text;
     // console.log(radioSetting.disabled)
@@ -12,11 +12,11 @@ import { decode } from 'he';
         <input 
             className={answer.type}
             onChange={(event) => selectAnswer(id, event.target.value)} 
-            onClick={(id) => changeRadio(id)} 
             type = "radio" 
             name = {id} 
             id = {answer.text}
             value = {answer.type}
+            // onClick={(id) => changeRadio(id)} 
             // disabled = {radioSetting.disabled}
              />
         <label className={answer.type} htmlFor={theAnswer}>{decode(theAnswer)}</label>

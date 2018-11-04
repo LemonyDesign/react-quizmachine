@@ -38,7 +38,8 @@ max-width: 100%;
 height: auto;
 border-style: none;
 }
-h1, h2, h3 {color: $primary-color;}
+h1, h2 {color: $primary-color;}
+h3, h4 {color: lighten($secondary-color, 30%)}
 .fas {color: $primary-color;}
 
 /* ==== LAYOUT ==== */

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Question from '../components/Question';
-import { fetchQuestionsFromAPI, addCorrectAnswers, setQuizStatus, setDifficultyLevel } from '../actions';
+import { fetchQuestionsFromAPI, scoreCorrectAnswers, setQuizStatus, setDifficultyLevel, resetScore, resetQuizStatus } from '../actions';
 
 
 const mapStateToProps = state => {
@@ -17,9 +17,16 @@ const mapDispatchToProps = dispatch => {
     // console.log("Step 2: getting action creator");
     return {
         fetchQuestionsFromAPI: () => dispatch(fetchQuestionsFromAPI()),
-        selectAnswer: (id, isCorrect) => dispatch(addCorrectAnswers(id, isCorrect)),
+        selectAnswer: (id, isCorrect) => dispatch(scoreCorrectAnswers(id, isCorrect)),
         endQuizSession: () => dispatch(setQuizStatus()),
-        startQuizSession: (difficulty) => dispatch(setDifficultyLevel(difficulty))
+
+        // startQuizSession: (difficulty) => dispatch(setDifficultyLevel(difficulty))
+        startQuizSession: (difficulty) =>  {
+            dispatch(setDifficultyLevel(difficulty));
+            dispatch(fetchQuestionsFromAPI());
+            dispatch(resetScore());
+            dispatch(resetQuizStatus());
+          }
     }
 }
 

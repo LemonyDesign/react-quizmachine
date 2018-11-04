@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Answer from '../components/Answer';
-import { addCorrectAnswers } from '../actions';
+import { scoreCorrectAnswers } from '../actions';
 import { disableRadio } from '../actions';
 
 
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        selectAnswer: (id, isCorrect) => dispatch(addCorrectAnswers(id, isCorrect)),
+        selectAnswer: (id, isCorrect) => dispatch(scoreCorrectAnswers(id, isCorrect)),
         changeRadio: (id) => dispatch(disableRadio(id))
     }
 }

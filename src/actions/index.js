@@ -28,36 +28,26 @@ function createQuestionsObject(resultsArray) {
   return obj;
 }
 
-export function receiveQuestions(body){
+export function loadQuestions(body){
   return {
       type: 'RECEIVE_QUESTIONS',
       questions: createQuestionsObject(body.results)
   }
 }
 
-export function fetchQuestionsFromAPI(){
-  return function(dispatch, getState){
-    
-      const difficulty = getState().difficultyLevel.difficulty;
-
-      fetch(`https://opentdb.com/api.php?amount=3&category=11&type=multiple&difficulty=${difficulty}`)
-      .then(response => response.json())
-      .then(body => {
-          dispatch(receiveQuestions(body))
-      })
-      .catch(function(error){
-
-      })
-  }
-}
-
-export function addCorrectAnswers(id, isCorrect){
+export function scoreCorrectAnswers(id, isCorrect){
   return {
-      type: 'ADD_CORRECT_ANSWERS',
+      type: 'SCORE_CORRECT_ANSWERS',
       id,
       isCorrect
   }
 }
+export function resetScore(){
+  return {
+      type: 'RESET_SCORE'
+  }
+}
+
 export function setDifficultyLevel(difficulty){
   return {
       type: 'SET_DIFFICULTY_LEVEL',
@@ -70,10 +60,33 @@ export function setQuizStatus(){
   }
 }
 
+export function resetQuizStatus(){
+  return {
+      type: 'RESET_QUIZ_STATUS'
+  }
+}
+
 // not currently used
 export function disableRadio(id){
   return {
       type: 'CHANGE_RADIO_SETTING',
       id
+  }
+}
+
+// THUNK REQUIREMENTS
+export function fetchQuestionsFromAPI(){
+  return function(dispatch, getState){
+    
+      const difficulty = getState().difficultyLevel;
+
+      fetch(`https://opentdb.com/api.php?amount=5&category=11&type=multiple&difficulty=${difficulty}`)
+      .then(response => response.json())
+      .then(body => {
+          dispatch(loadQuestions(body))
+      })
+      .catch(function(error){
+
+      })
   }
 }

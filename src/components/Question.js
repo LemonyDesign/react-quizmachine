@@ -7,7 +7,6 @@ import cx from 'classnames';
 class Question extends React.Component {
 
     componentDidMount() {
-        // console.log("Step 1: calling fetchQuestions");
         this.props.fetchQuestionsFromAPI();
       }
 
@@ -15,17 +14,19 @@ class Question extends React.Component {
       const questions = this.props.questions;
       const scoreTally = this.props.scoreTally;
       const status = this.props.status;
+      const difficulty = this.props.difficulty;
       const idKeys = Object.keys(questions);
-
+      const totalQuestions = Object.keys(questions).length;
+      
       const completedClasses = cx('quiz__session', {
-        'quiz--completed': status.completed,
-        '': !status.completed
+        'quiz--completed': status.completed
       });
 
       return (
 
         <section className={completedClasses}>
-            <h2>Know your movies?</h2>
+            <h2>Test your smart</h2>
+            <h3>{ ( difficulty === "easy") ? `Begin with` : `Movin on up to `}  {difficulty}</h3>
 
             {idKeys.map(id => {
             
@@ -50,15 +51,18 @@ class Question extends React.Component {
               <button type="text" className="btn btn__feedback" onClick={() => this.props.endQuizSession()} >How did you do?</button>
             </header>
 
-              <h2 className="outcome__score">You scored {scoreTally.score} out of 3</h2>
-                
+              <h2 className="outcome__score">You scored {scoreTally.score} out of {totalQuestions}</h2>
+              
               <ul className="outcome__menu menu--settings">
                 <li>
-                  <button onClick={event => this.props.startQuizSession(event.target.value)} value="easy" className="btn btn__again" type="text">Again at this level</button>
+                  <button onClick={event => this.props.startQuizSession(event.target.value)} value="easy" className="btn btn__again" type="text">Easy peasy, pleasy</button>
                 </li>
                 <li>
-                <button onClick={event => this.props.startQuizSession(event.target.value)} value="medium" className="btn btn__medium" type="text">Make me sweat a bit</button>
+                <button onClick={event => this.props.startQuizSession(event.target.value)} value="medium" className="btn btn__medium" type="text">Make me sweat</button>
                 </li>
+                <li>
+                <button onClick={event => this.props.startQuizSession(event.target.value)} value="hard" className="btn btn__hard" type="text">Haway, bring it on</button>
+                </li>                
               </ul>
 
           </section>
