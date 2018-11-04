@@ -35,10 +35,11 @@ export function receiveQuestions(body){
   }
 }
 
-export function fetchQuestionsFromAPI(difficulty){
+export function fetchQuestionsFromAPI(){
   return function(dispatch, getState){
-      console.log("Step 3: calling fetch")
-      // const {} = getState();
+    
+      const difficulty = getState().difficultyLevel.difficulty;
+
       fetch(`https://opentdb.com/api.php?amount=3&category=11&type=multiple&difficulty=${difficulty}`)
       .then(response => response.json())
       .then(body => {

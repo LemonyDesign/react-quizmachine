@@ -8,11 +8,10 @@ class Question extends React.Component {
 
     componentDidMount() {
         // console.log("Step 1: calling fetchQuestions");
-        this.props.fetchQuestionsFromAPI(difficulty);
+        this.props.fetchQuestionsFromAPI();
       }
 
     render(){
-      const difficulty = this.props.difficulty;
       const questions = this.props.questions;
       const scoreTally = this.props.scoreTally;
       const status = this.props.status;
