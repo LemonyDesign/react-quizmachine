@@ -35,11 +35,11 @@ export function receiveQuestions(body){
   }
 }
 
-export function fetchQuestionsFromAPI(){
+export function fetchQuestionsFromAPI(difficulty){
   return function(dispatch, getState){
       console.log("Step 3: calling fetch")
       // const {} = getState();
-      fetch(`https://opentdb.com/api.php?amount=10&category=11&type=multiple`)
+      fetch(`https://opentdb.com/api.php?amount=3&category=11&type=multiple&difficulty=${difficulty}`)
       .then(response => response.json())
       .then(body => {
           dispatch(receiveQuestions(body))
@@ -47,7 +47,6 @@ export function fetchQuestionsFromAPI(){
       .catch(function(error){
 
       })
-     
   }
 }
 
@@ -58,16 +57,22 @@ export function addCorrectAnswers(id, isCorrect){
       isCorrect
   }
 }
+export function setDifficultyLevel(difficulty){
+  return {
+      type: 'SET_DIFFICULTY_LEVEL',
+      difficulty
+  }
+}
+export function setQuizStatus(){
+  return {
+      type: 'SET_QUIZ_STATUS'
+  }
+}
 
+// not currently used
 export function disableRadio(id){
   return {
       type: 'CHANGE_RADIO_SETTING',
       id
-  }
-}
-
-export function setQuizStatus(){
-  return {
-      type: 'SET_QUIZ_STATUS'
   }
 }

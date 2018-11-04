@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/components/Answer.scss';
 import { decode } from 'he';
 
     function Answer({answer, id, selectAnswer, changeRadio, radioSetting}){

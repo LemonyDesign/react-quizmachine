@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
       <header className="container">
-      <h1>Let&rsquo;s get Quizicle <i className="fas fa-hand-spock"></i></h1></header>
+      <h1>I am Smarticus <i className="fas fa-user-graduate"></i></h1></header>
       <main className="container">
       
         <QuestionsContainer />
