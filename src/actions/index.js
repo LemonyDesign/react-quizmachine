@@ -37,7 +37,7 @@ export function loadQuestions(body){
 
 export function scoreCorrectAnswers(id, isCorrect){
   return {
-      type: 'SCORE_CORRECT_ANSWERS',
+      type: 'INCREMENT_CORRECT_ANSWERS',
       id,
       isCorrect
   }
@@ -66,11 +66,9 @@ export function resetQuizStatus(){
   }
 }
 
-// not currently used
-export function disableRadio(id){
+export function setRadioChecked(){
   return {
-      type: 'CHANGE_RADIO_SETTING',
-      id
+      type: 'INCREMENT_CHECKED_ANSWERS'
   }
 }
 
@@ -80,7 +78,7 @@ export function fetchQuestionsFromAPI(){
     
       const difficulty = getState().difficultyLevel;
 
-      fetch(`https://opentdb.com/api.php?amount=5&category=11&type=multiple&difficulty=${difficulty}`)
+      fetch(`https://opentdb.com/api.php?amount=3&category=11&type=multiple&difficulty=${difficulty}`)
       .then(response => response.json())
       .then(body => {
           dispatch(loadQuestions(body))

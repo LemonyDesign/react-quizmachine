@@ -2,10 +2,8 @@ import React from 'react';
 import '../styles/components/Answer.scss';
 import { decode } from 'he';
 
-    function Answer({answer, id, selectAnswer, changeRadio}){
-    
+    function Answer({answer, id, selectAnswer, checkRadio}){
     const theAnswer = answer.text;
-    // console.log(radioSetting.disabled)
     
     return (
     <div className="quizunit__controls">
@@ -16,8 +14,7 @@ import { decode } from 'he';
             name = {id} 
             id = {answer.text}
             value = {answer.type}
-            // onClick={(id) => changeRadio(id)} 
-            // disabled = {radioSetting.disabled}
+            onClick={() => checkRadio()} 
              />
         <label className={answer.type} htmlFor={theAnswer}>{decode(theAnswer)}</label>
     </div>

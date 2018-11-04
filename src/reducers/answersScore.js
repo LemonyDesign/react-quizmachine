@@ -1,10 +1,10 @@
-function scoreCorrectAnswers(state = {
+function correctAnswersIncrement(state = {
     answers: {},
     score: 0
 }, action){
   switch (action.type) {
 
-    case 'SCORE_CORRECT_ANSWERS':
+    case 'INCREMENT_CORRECT_ANSWERS':
     const updatedAnswers = Object.assign({}, state.answers, {[action.id]: action.isCorrect});
     const newScore = (action.isCorrect === "correct") ? state.score +1 : state.score;
     const newState = Object.assign({}, state, {answers: updatedAnswers, score: newScore });
@@ -18,4 +18,4 @@ function scoreCorrectAnswers(state = {
       return state
   } 
 }
-export default scoreCorrectAnswers;
+export default correctAnswersIncrement;

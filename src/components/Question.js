@@ -13,10 +13,12 @@ class Question extends React.Component {
     render(){
       const questions = this.props.questions;
       const scoreTally = this.props.scoreTally;
+      const checkedTally = this.props.checkedTally;
       const status = this.props.status;
       const difficulty = this.props.difficulty;
       const idKeys = Object.keys(questions);
       const totalQuestions = Object.keys(questions).length;
+      const totalChecked = checkedTally.count;
       
       const completedClasses = cx('quiz__session', {
         'quiz--completed': status.completed
@@ -46,10 +48,9 @@ class Question extends React.Component {
             })}
         
           <section className="outcome">
-
-            <header className="outcome__feedback">
-              <button type="text" className="btn btn__feedback" onClick={() => this.props.endQuizSession()} >How did you do?</button>
-            </header>
+              <header className="outcome__feedback">
+                <button type="text" className="btn btn__feedback" onClick={() => this.props.endQuizSession()} >How did you do?</button>
+              </header>
 
               <h2 className="outcome__score">You scored {scoreTally.score} out of {totalQuestions}</h2>
               
