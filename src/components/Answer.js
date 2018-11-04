@@ -18,7 +18,7 @@ import { decode } from 'he';
             value = {answer.type}
             // disabled = {radioSetting.disabled}
              />
-        <label className="quizunit__label" htmlFor={theAnswer}>{decode(theAnswer)}</label>
+        <label className={answer.type} htmlFor={theAnswer}>{decode(theAnswer)}</label>
     </div>
     )
 }
