@@ -54,9 +54,10 @@ export function setDifficultyLevel(difficulty){
       difficulty
   }
 }
-export function setQuizStatus(){
+export function setQuizStatus(sessionScore){
   return {
-      type: 'SET_QUIZ_STATUS'
+      type: 'SET_QUIZ_STATUS',
+      sessionScore
   }
 }
 

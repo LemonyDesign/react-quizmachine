@@ -9,7 +9,7 @@ const mapStateToProps = state => {
         scoreTally: state.answersScore,
         status: state.quizStatus,
         difficulty: state.difficultyLevel,
-        checkedTally: state.answersChecked
+        checkedTally: state.answersChecked,
     }
 }
 
@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchQuestionsFromAPI: () => dispatch(fetchQuestionsFromAPI()),
         selectAnswer: (id, isCorrect) => dispatch(scoreCorrectAnswers(id, isCorrect)),
-        endQuizSession: () => dispatch(setQuizStatus()),
+        endQuizSession: (sessionScore) => dispatch(setQuizStatus(sessionScore)),
 
         startQuizSession: (difficulty) =>  {
             dispatch(setDifficultyLevel(difficulty));

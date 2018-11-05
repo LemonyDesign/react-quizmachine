@@ -1,9 +1,13 @@
 function setQuizStatus(state = {
-    completed: false
+    completed: false,
+    totalscore: 0
 }, action){
   switch (action.type) {
     case 'SET_QUIZ_STATUS':
-    const newState = Object.assign({}, state, {completed: true});    
+    const newSessionTotal = action.sessionScore;
+    const newState = Object.assign({}, state, {completed: true, totalscore: newSessionTotal + state.totalscore});
+
+    // const newState = Object.assign({}, state, {completed: true});    
     return newState;
 
     case 'RESET_QUIZ_STATUS':

@@ -27,8 +27,9 @@ class Question extends React.Component {
       return (
 
         <section className={completedClasses}>
-            <h2>Test your smart</h2>
+            <h2>How smart?</h2>
             <h3>{ ( difficulty === "easy") ? `Begin with` : `Movin on up to `}  {difficulty}</h3>
+            <h4>Running total {status.totalscore}</h4>
 
             {idKeys.map(id => {
             
@@ -49,7 +50,7 @@ class Question extends React.Component {
         
           <section className="outcome">
               <header className="outcome__feedback">
-                <button type="text" className="btn btn__feedback" onClick={() => this.props.endQuizSession()} >How did you do?</button>
+                <button type="text" className="btn btn__feedback" onClick={() => this.props.endQuizSession(scoreTally.score)}>How did you do?</button>
               </header>
 
               <h2 className="outcome__score">You scored {scoreTally.score} out of {totalQuestions}</h2>
